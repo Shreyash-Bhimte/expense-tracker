@@ -1,19 +1,33 @@
-// Login page — email/password form UI.
-// Auth logic wired up in Commit 4.
+// Login page — handles sign-in and redirects to dashboard on success
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 import styles from './Auth.module.css';
 
 function Login() {
-  // Controlled inputs — each keystroke updates state, input always reflects state
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e) {
-    // Prevent browser's default form submission (page reload)
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log('Login submitted:', { email, password });
+    setError('');
+    setSubmitting(true);
+
+    try {
+      await signIn(email, password);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      // runs whether sign-in succeeded or failed
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -21,6 +35,8 @@ function Login() {
       <div className={styles.card}>
         <h1 className={styles.title}>Welcome back</h1>
         <p className={styles.subtitle}>Sign in to your expense tracker</p>
+
+        {error && <p className={styles.error}>{error}</p>}
 
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
@@ -49,8 +65,12 @@ function Login() {
             />
           </div>
 
-          <button type="submit" className={styles.button}>
-            Sign in
+          <button
+            type="submit"
+            className={styles.button}
+            disabled={submitting}
+          >
+            {submitting ? 'Signing in...' : 'Sign in'}
           </button>
         </form>
 

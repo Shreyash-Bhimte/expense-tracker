@@ -1,18 +1,44 @@
-// Signup page — email/password registration form UI.
-// Auth logic wired up in Commit 4.
+// Signup page — creates a new user account and redirects to dashboard
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 import styles from './Auth.module.css';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e) {
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log('Signup submitted:', { email, password, confirmPassword });
+    setError('');
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters.');
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      await signUp(email, password);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -20,6 +46,8 @@ function Signup() {
       <div className={styles.card}>
         <h1 className={styles.title}>Create account</h1>
         <p className={styles.subtitle}>Start tracking your expenses</p>
+
+        {error && <p className={styles.error}>{error}</p>}
 
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
@@ -61,8 +89,12 @@ function Signup() {
             />
           </div>
 
-          <button type="submit" className={styles.button}>
-            Create account
+          <button
+            type="submit"
+            className={styles.button}
+            disabled={submitting}
+          >
+            {submitting ? 'Creating account...' : 'Create account'}
           </button>
         </form>
 
