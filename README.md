@@ -136,9 +136,8 @@ Environment variables are configured in Vercel → Project Settings → Environm
 
 ## Screenshots
 
-<!-- Add screenshots here after deployment -->
-<!-- Tip: one dashboard screenshot with data, one mobile screenshot -->
-
+![Dashboard](screenshots/dashboard.png)
+![Mobile](screenshots/mobile.png)
 ---
 
 ## Author
