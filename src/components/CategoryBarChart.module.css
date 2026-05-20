@@ -1,0 +1,30 @@
+/* Bar chart card */
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.empty {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.875rem;
+  padding: 24px 0;
+}
+
+.chartWrapper {
+  width: 100%;
+  overflow-x: auto;
+}

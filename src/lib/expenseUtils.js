@@ -47,3 +47,25 @@ export function formatMonthLabel(yearMonth) {
     year:  'numeric',
   });
 }
+
+/**
+ * Returns an array of { date, total } objects for every day
+ * in the given YYYY-MM month, including days with zero spend.
+ * Used for the daily spending line chart.
+ */
+export function getDailyBreakdown(expenses, yearMonth) {
+  const [year, month] = yearMonth.split('-').map(Number);
+
+  // Total days in the selected month
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  return Array.from({ length: daysInMonth }, (_, i) => {
+    const day       = String(i + 1).padStart(2, '0');
+    const dateStr   = `${yearMonth}-${day}`;
+    const total     = expenses
+      .filter(e => e.date === dateStr)
+      .reduce((sum, e) => sum + Number(e.amount), 0);
+
+    return { date: String(i + 1), total };
+  });
+}

@@ -1,5 +1,4 @@
-// Dashboard page — expense list with monthly filter and summary stats.
-// Charts added in Commits 10–11.
+// Dashboard page — full view with filter, summary, charts, and expense list.
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +7,8 @@ import { useExpenses } from '../hooks/useExpenses';
 import ExpenseList from '../components/ExpenseList';
 import SummaryCards from '../components/SummaryCards';
 import MonthFilter from '../components/MonthFilter';
+import CategoryBarChart from '../components/CategoryBarChart';
+import DailyLineChart from '../components/DailyLineChart';
 import { getCurrentMonth } from '../lib/expenseUtils';
 import styles from './Dashboard.module.css';
 
@@ -16,10 +17,8 @@ function Dashboard() {
   const { expenses, loading, error, deleteExpense, updateExpense } = useExpenses();
   const navigate = useNavigate();
 
-  // Filter state — defaults to current month
   const [selectedMonth, setSelectedMonth] = useState(getCurrentMonth);
 
-  // Derived — no extra state needed
   const filteredExpenses = expenses.filter(e =>
     e.date.startsWith(selectedMonth)
   );
@@ -63,19 +62,23 @@ function Dashboard() {
           <p className={styles.error}>Failed to load expenses: {error}</p>
         )}
 
-        {/* Month selector */}
         <MonthFilter
           expenses={expenses}
           selectedMonth={selectedMonth}
           onMonthChange={setSelectedMonth}
         />
 
-        {/* Summary stats for filtered month */}
         {!loading && (
-          <SummaryCards expenses={filteredExpenses} />
+          <>
+            <SummaryCards expenses={filteredExpenses} />
+            <CategoryBarChart expenses={filteredExpenses} />
+            <DailyLineChart
+              expenses={filteredExpenses}
+              selectedMonth={selectedMonth}
+            />
+          </>
         )}
 
-        {/* Filtered expense list */}
         <ExpenseList
           expenses={filteredExpenses}
           loading={loading}
