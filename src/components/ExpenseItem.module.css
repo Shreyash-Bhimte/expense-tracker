@@ -1,0 +1,75 @@
+/* Single expense row in the expense list */
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  margin-bottom: 10px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.categoryDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.category {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 2px;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.deleteButton:hover {
+  color: #e74c3c;
+}

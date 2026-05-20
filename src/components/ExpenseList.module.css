@@ -1,0 +1,37 @@
+/* Expense list container with empty and loading states */
+
+.container {
+  margin-top: 8px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.emptyIcon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.emptyTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.emptySubtitle {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.loadingState {
+  text-align: center;
+  padding: 48px 24px;
+  color: #888;
+  font-size: 0.9rem;
+}
