@@ -1,21 +1,21 @@
-/* Summary stat cards displayed at the top of the dashboard */
+/* Summary stat cards — stack to single column on mobile */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 16px;
-  margin-bottom: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
 .card {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  padding: 20px;
+  padding: 18px 20px;
 }
 
 .label {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #888;
   text-transform: uppercase;
@@ -24,13 +24,13 @@
 }
 
 .value {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #1a1a1a;
 }
 
 .subValue {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #555;
   margin-top: 4px;
 }
@@ -65,4 +65,14 @@
 .categoryAmount {
   font-weight: 600;
   color: #1a1a1a;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value {
+    font-size: 1.2rem;
+  }
 }

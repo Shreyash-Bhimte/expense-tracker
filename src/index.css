@@ -1,4 +1,5 @@
-/* Global reset and base styles */
+/* Global reset, base styles, and responsive typography */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -9,4 +10,12 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #F5F5F5;
   color: #1a1a1a;
+  /* Prevent horizontal scroll from any overflowing child */
+  overflow-x: hidden;
+}
+
+/* Prevent inputs and buttons from shrinking below their content on iOS */
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
 }
