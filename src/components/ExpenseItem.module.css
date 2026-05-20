@@ -73,3 +73,110 @@
 .deleteButton:hover {
   color: #e74c3c;
 }
+
+/* Inline edit form styles */
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.editRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.editInput,
+.editSelect {
+  padding: 8px 10px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  outline: none;
+  background: #fff;
+  color: #1a1a1a;
+  transition: border-color 0.2s;
+}
+
+.editInput:focus,
+.editSelect:focus {
+  border-color: #4F6EF7;
+}
+
+.editInput.amount {
+  width: 110px;
+}
+
+.editInput.date {
+  width: 150px;
+}
+
+.editSelect {
+  flex: 1;
+  min-width: 120px;
+}
+
+.editInput.note {
+  flex: 1;
+  min-width: 200px;
+}
+
+.editActions {
+  display: flex;
+  gap: 8px;
+}
+
+.saveButton {
+  padding: 7px 16px;
+  background-color: #4F6EF7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.saveButton:hover {
+  background-color: #3a57d4;
+}
+
+.saveButton:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.cancelEditButton {
+  padding: 7px 14px;
+  background: none;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #666;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.cancelEditButton:hover {
+  border-color: #aaa;
+}
+
+.editButton {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.editButton:hover {
+  color: #4F6EF7;
+}

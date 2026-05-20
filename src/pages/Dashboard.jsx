@@ -9,7 +9,7 @@ import styles from './Dashboard.module.css';
 
 function Dashboard() {
   const { user, signOut } = useAuth();
-  const { expenses, loading, error, deleteExpense } = useExpenses();
+  const { expenses, loading, error, deleteExpense, updateExpense } = useExpenses();
   const navigate = useNavigate();
 
   async function handleDelete(id) {
@@ -20,9 +20,12 @@ function Dashboard() {
     }
   }
 
+  async function handleUpdate(id, changes) {
+    await updateExpense(id, changes);
+  }
+
   return (
     <div className={styles.page}>
-      {/* Top navigation bar */}
       <nav className={styles.nav}>
         <span className={styles.navBrand}>ExpenseTracker</span>
         <div className={styles.navRight}>
@@ -34,7 +37,6 @@ function Dashboard() {
       </nav>
 
       <main className={styles.main}>
-        {/* Page header */}
         <div className={styles.header}>
           <h1 className={styles.heading}>My Expenses</h1>
           <button
@@ -45,16 +47,15 @@ function Dashboard() {
           </button>
         </div>
 
-        {/* Error state */}
         {error && (
           <p className={styles.error}>Failed to load expenses: {error}</p>
         )}
 
-        {/* Expense list */}
         <ExpenseList
           expenses={expenses}
           loading={loading}
           onDelete={handleDelete}
+          onUpdate={handleUpdate}
         />
       </main>
     </div>

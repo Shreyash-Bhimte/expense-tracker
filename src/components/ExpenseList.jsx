@@ -4,7 +4,7 @@
 import ExpenseItem from './ExpenseItem';
 import styles from './ExpenseList.module.css';
 
-function ExpenseList({ expenses, loading, onDelete }) {
+function ExpenseList({ expenses, loading, onDelete, onUpdate }) {
   if (loading) {
     return (
       <div className={styles.loadingState}>
@@ -30,6 +30,7 @@ function ExpenseList({ expenses, loading, onDelete }) {
           key={expense.id}
           expense={expense}
           onDelete={onDelete}
+          onUpdate={onUpdate}
         />
       ))}
     </div>
