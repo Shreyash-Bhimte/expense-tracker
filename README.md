@@ -2,8 +2,7 @@
 
 A full-stack personal finance app for tracking monthly expenses — built as my first React project and first project with a real backend, authentication, and database.
 
-**Live demo:** https://expense-tracker-git-main-shreyash-bhimtes-projects.vercel.app/login
-
+🔗 **Live Demo:** [Expense Tracker App](https://expense-tracker-git-main-shreyash-bhimtes-projects.vercel.app/login)
 ---
 
 ## Features
