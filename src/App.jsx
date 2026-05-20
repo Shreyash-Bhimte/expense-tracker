@@ -1,26 +1,19 @@
-// Temporary connection test — will be replaced in Commit 3
+// Root component — defines all client-side routes for the application
 
-import { useEffect } from 'react';
-import { supabase } from './lib/supabaseClient';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
-  useEffect(() => {
-    // Fetches the current auth session — returns null if no user is logged in.
-    // A successful response (even null) confirms the Supabase connection works.
-    supabase.auth.getSession().then(({ data, error }) => {
-      if (error) {
-        console.error('Supabase connection error:', error.message);
-      } else {
-        console.log('Supabase connected. Session:', data.session);
-      }
-    });
-  }, []);
-
   return (
-    <div>
-      <h1>Expense Tracker</h1>
-      <p>Supabase connection test — check the console.</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Default route redirects to login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
