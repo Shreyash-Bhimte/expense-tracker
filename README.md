@@ -2,7 +2,7 @@
 
 A full-stack personal finance app for tracking monthly expenses — built as my first React project and first project with a real backend, authentication, and database.
 
-🔗 **Live Demo:** [Expense Tracker App](https://expense-tracker-beta-ruby-92.vercel.app/login)
+🔗 **Live Demo:** [Expense Tracker App](https://expense-tracker-beta-ruby-92.vercel.app)
 ---
 
 ## Features
