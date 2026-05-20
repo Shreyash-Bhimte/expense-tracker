@@ -2,7 +2,7 @@
 
 A full-stack personal finance app for tracking monthly expenses — built as my first React project and first project with a real backend, authentication, and database.
 
-🔗 **Live Demo:** [Expense Tracker App](https://expense-tracker-git-main-shreyash-bhimtes-projects.vercel.app/login)
+🔗 **Live Demo:** [Expense Tracker App](https://expense-tracker-git-main-shreyash-bhimtes-projects.vercel.app)
 ---
 
 ## Features
@@ -42,7 +42,7 @@ A full-stack personal finance app for tracking monthly expenses — built as my 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/expense-tracker.git
+git clone https://github.com/Shreyash-Bhimte/expense-tracker.git
 cd expense-tracker
 npm install
 ```
@@ -83,8 +83,10 @@ create policy "Users can delete own expenses"
 ### 3. Set environment variables
 
 Create a `.env.local` file in the project root:
+```
 VITE_SUPABASE_URL=your_project_url
 VITE_SUPABASE_ANON_KEY=your_anon_key
+```
 
 Both values are in Supabase → Project Settings → API.
 
